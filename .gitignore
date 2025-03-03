@@ -8,3 +8,10 @@ node_modules/
 .github/
 cloudinary_python.txt
 kaggle.json
+cherry-leaves/train/
+cherry-leaves/test/
+cherry-leaves/validation/
+outputs/v1/
+outputs/v2/
+*.keras
+*.pkl

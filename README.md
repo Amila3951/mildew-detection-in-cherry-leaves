@@ -43,12 +43,12 @@ To address this challenge, the IT department has proposed developing a machine l
 
 1.  **Visual Pattern Analysis:**
     * Conduct exploratory data analysis (EDA) on the image dataset to identify and document distinct visual patterns.
-    * Utilize image processing techniques (e.g., feature extraction, edge detection) to quantify and compare these patterns.
+    * Utilize image processing techniques to quantify and compare these patterns.
     * Employ visualization tools to illustrate the observed differences between healthy and infected leaves.
 
 2.  **Feature Variation Analysis:**
-    * Apply color analysis techniques (e.g., histogram analysis, color space transformations) to detect subtle color variations.
-    * Implement shape analysis techniques (e.g., contour detection, geometric feature extraction) to identify subtle form variations.
+    * Apply color analysis techniques to detect subtle color variations.
+    * Implement shape analysis techniques  to identify subtle form variations.
     * Employ statistical methods to assess the significance of these variations.
 
 3.  **Model Performance Evaluation:**
@@ -63,40 +63,39 @@ To address this challenge, the IT department has proposed developing a machine l
 
 -   **Visual Differentiation:**
     * A comparative image montage visually demonstrates the discernible differences between healthy cherry leaves and those affected by powdery mildew.
-    * [Image montage healthy leaves](/workspaces/mildew-detection-in-cherry-leaves/images/healthy.png)
-    * [Image montage mildew leaves](/workspaces/mildew-detection-in-cherry-leaves/images/powdery.png)
+
+    **Healthy Leaves**
+    ![Image montage healthy leaves](/images/healthy.png)
+
+    **Mildew Leaves**
+    ![Image montage mildew leaves](/images/powdery.png)
+
     * This visual assessment supports the hypothesis that distinct patterns are observable.
 
 -   **Color and Form Analysis:**
     * Analysis of average color, color difference, and color variability within the central region of each leaf image revealed quantifiable color variations between healthy and infected leaves.
-    * [Average Healthy](/workspaces/mildew-detection-in-cherry-leaves/outputs/v1/average_variability_healthy.png)
-    * [Average Infected](/workspaces/mildew-detection-in-cherry-leaves/outputs/v1/average_variability_powdery_mildew.png)
-    * [Difference](/workspaces/mildew-detection-in-cherry-leaves/outputs/v1/class_differences_powdery_mildew_healthy.png)
+    
+    **Average Healthy**
+    ![Average Healthy](/outputs/v1/average_variability_healthy.png)
+
+    **Average Infected**
+    ![Average Infected](/outputs/v1/average_variability_powdery_mildew.png)
+
+    **Difference healthy - mildew**
+    ![Difference](/outputs/v1/class_differences_powdery_mildew_healthy.png)
+
     * While color differences were evident, no readily apparent shape-based patterns were identified that could reliably distinguish between the two categories.
 
 -   **Machine Learning Model Performance:**
+
     * The machine learning pipeline achieved a classification accuracy of 99% in distinguishing between healthy and diseased cherry leaves.
-    * [Performance Metrics](/workspaces/mildew-detection-in-cherry-leaves/images/performance_metrics.png)
+
+    ![Performance Metrics](/images/performance_metrics.png)
+
     * This result validates the hypothesis that a high-accuracy model could be developed using the provided dataset.
     * The performance metrics provided by the image, should be discussed in the text, for example: "The performance metrics displayed in the image, showcase a high level of precision, recall and F1 score, thus validating the model's accuracy."
 
-**Key Changes and Rationale:**
 
-* **"Validation" to "Validation Results":** More specific and descriptive.
-* **Structured Presentation:** Use of bullet points to organize findings.
-* **Descriptive Language:** More precise and professional phrasing.
-* **Image References:** Maintained image links for visual support.
-* **Detailed Analysis:** Added context and explanations for each validation point.
-* **Clear Connection to Hypotheses:** Explicitly stated how the results support or refute the initial hypotheses.
-* **Improved Flow:** Transitions between points are smoother and more logical.
-* **More precise language:** Changed "apparent distinction" to "discernible differences" and "supported the notion" to "revealed quantifiable color variations".
-* Added the suggestion to describe the performance metric image.
-* Added the phrase "This visual assessment supports the hypothesis that distinct patterns are observable." to more clearly connect the image montages to the hypothesis.
-
-These changes aim to present the validation results in a more professional, detailed, and impactful manner.
-
-
-## Rationale for Mapping Business Objectives to Data Visualizations and Machine Learning Tasks
 
 ## Rationale for Mapping Business Objectives to Data Visualizations and Machine Learning Tasks
 
@@ -120,29 +119,13 @@ The client needs a system to classify individual cherry leaf images as either he
 * **Model Performance Evaluation:** The model's performance will be rigorously evaluated by analyzing loss and accuracy metrics. This will ensure the model's reliability and effectiveness in classifying leaf images.
 * **Prediction Report Generation and Download:** Functionality will be implemented to allow users to generate and download a comprehensive prediction report for uploaded photos. This report will provide detailed classification results, enhancing the user experience and facilitating data sharing.
 
-**Key Changes and Rationale:**
-
-* **"Data Visualization" to "Data Visualization Strategy" and "Classification" to "Machine Learning Task: Binary Classification":** More descriptive and accurate.
-* **"The dashboard will show" to "The interactive dashboard will present":** Added "interactive" to convey a more dynamic user experience.
-* **Added Explanations:** More detailed descriptions of the purpose and value of each visualization and machine learning task.
-* **"Build a binary classifier ML model" to "Development of a Binary Classification Model":** More formal and precise.
-* **"Evaluate the Ml model's loss and accuracy" to "Model Performance Evaluation":** More professional and encompassing.
-* **"Add an option for users to generate and download a prediction report for uploadable photos" to "Prediction Report Generation and Download":** More concise and descriptive.
-* **Added "This will allow for a direct visual comparison, highlighting characteristic features and variability within each category." and other similar explanations:** This helps to clarify the purpose of each step.
-* **Added "This will clearly illustrate the key visual distinctions that differentiate the two categories.":** To better explain the value of the average leaf difference visualization.
-* **Added "This side-by-side comparison will facilitate the identification of subtle and obvious visual patterns.":** To better explain the value of the image montage.
-* **Added "This model will provide an automated and efficient solution for image classification.":** to explain the outcome of the ML task.
-* **Added "This will ensure the model's reliability and effectiveness in classifying leaf images.":** To explain the value of the model performance evaluation.
-* **Added "This report will provide detailed classification results, enhancing the user experience and facilitating data sharing.":** To explain the value of the prediction report.
-
-These changes provide a more comprehensive and professional overview of the rationale behind mapping business objectives to specific project tasks.
 
 
 ## Cross-Industry Standard Process for Data Mining (CRISP-DM) Methodology
 
 This project followed the Cross-Industry Standard Process for Data Mining (CRISP-DM) methodology to ensure a structured and comprehensive approach to development.
 
-![Crisp- DM image](/workspaces/mildew-detection-in-cherry-leaves/images/crisp.png)
+![Crisp- DM image](/images/crisp.png)
 
 **1. Business Understanding**
 
@@ -197,144 +180,42 @@ The project utilizes the [Kaggle dataset](https://www.kaggle.com/datasets/codein
 
 * **Model Deployment:** Deploy the trained and evaluated model into a production environment for real-world use.
 
-**Key Changes and Rationale:**
-
-* **"Business Requirement" to "Business Objective":** Consistent terminology.
-* **Added "Visual Differentiation Research" and "Image Classification for Powdery Mildew Detection" :** To more clearly describe the business objectives.
-* **Added "Data Collection:" :** To more clearly describe the data collection step.
-* **Added "Data Cleaning:" :** To more clearly describe the data cleaning step.
-* **Added "Dataset Splitting:" :** To more clearly describe the dataset splitting step.
-* **Added "Image Standardization:" :** To more clearly describe the image standardization step.
-* **Added "Image Analysis:" :** To more clearly describe the image analysis step.
-* **Added "Data Augmentation:" :** To more clearly describe the data augmentation step.
-* **Added "Model Selection:" :** To more clearly describe the model selection step.
-* **Added "Model Training:" :** To more clearly describe the model training step.
-* **Added "Model Saving:" :** To more clearly describe the model saving step.
-* **Added "Performance Visualization:" :** To more clearly describe the performance visualization step.
-* **Added "Model Testing:" :** To more clearly describe the model testing step.
-* **Added "Prediction Testing:" :** To more clearly describe the prediction testing step.
-* **Added "Model Deployment:" :** To more clearly describe the model deployment step.
-
-These changes aim to provide a more detailed and comprehensive overview of the CRISP-DM process applied in this project, enhancing clarity and professionalism.
 
 
 ## Machine Learning Business Case
 
-### Business Case Assessment
+This project addresses a critical business need for Farmy & Foods: automating the detection of powdery mildew in cherry leaves. Currently, manual inspection is time-consuming and inefficient. This project leverages machine learning to develop a system that accurately classifies cherry leaf images as healthy or infected.
 
-* **Business Objectives:**
-    * Conduct a visual analysis to distinguish between healthy cherry leaves and those affected by powdery mildew.
-    * Develop a system to classify individual cherry leaf images as either healthy or infected with powdery mildew.
+### Project Goals
 
-* **Conventional Data Analysis Applicability:**
-    * Yes, traditional data analysis techniques can be employed for the visual differentiation research objective.
+* Visual Analysis: Provide an interactive dashboard for visualizing and comparing healthy and infected leaves.
+* Image Classification: Develop a machine learning model that accurately predicts the health status of cherry leaves.
 
-* **Dashboard or API Endpoint:**
-    * The client requires an interactive dashboard for visual analysis and model interaction.
+### Solution
 
-* **Project Success Criteria:**
-    * Successful completion of the visual differentiation study, providing clear insights into distinguishing features.
-    * Development of a machine learning model capable of accurately predicting the health status of cherry leaves.
+A binary classification model, specifically a Convolutional Neural Network (CNN), will be trained on a dataset of cherry leaf images. This model will be integrated into an interactive dashboard, allowing users to upload images and receive predictions.
 
-* **Epic and User Story Breakdown:**
+### Client Benefits
 
-    1.  **Data Acquisition and Preparation:**
-        * Gather and prepare the cherry leaf image dataset.
-        * Perform data cleaning and preprocessing.
+* Improved Efficiency: Automate the detection process, saving time and resources.
+* Enhanced Accuracy: Achieve high accuracy in disease detection.
+* Scalability: Easily scale the solution to accommodate larger datasets and future applications.
 
-    2.  **Visual Analysis and Exploration:**
-        * Conduct exploratory data analysis (EDA) to understand the dataset.
-        * Create visualizations to compare healthy and infected leaves.
+This project will deliver a valuable tool for Farmy & Foods, improving their ability to manage powdery mildew and maintain the quality of their cherry crops.
 
-    3.  **Model Development and Evaluation:**
-        * Develop and train a machine learning model for image classification.
-        * Evaluate model performance and optimize parameters.
-
-    4.  **Dashboard Design and Implementation:**
-        * Design and develop an interactive dashboard for data visualization and model interaction.
-
-    5.  **Deployment and Release:**
-        * Deploy the dashboard and make it accessible to the client.
-
-* **Ethical and Privacy Considerations:**
-    * The client provided the data under a non-disclosure agreement (NDA).
-    * Data access and sharing will be strictly limited to authorized personnel involved in the project.
-
-* **Model Selection:**
-    * The project requires a binary classification model to predict the health status of cherry leaves.
-
-* **Model Inputs and Outputs:**
-    * Input: Cherry leaf image.
-    * Output: Prediction of whether the cherry leaf is healthy or infected with powdery mildew.
-
-* **Performance Goal:**
-    * Achieve a minimum accuracy of 97% in classifying cherry leaf images.
-
-* **Client Benefits:**
-    * Enhanced ability to detect and manage powdery mildew in cherry orchards.
-    * Improved crop yield and product quality.
-    * Reduced reliance on time-consuming and inefficient manual inspection methods.
-    * Potential for application to other crops and broader pest management strategies.
-
-
-    ### ***Actions to Fulfill the Business Case***
-
-> Using the dataset of images provided by the client, build a supervised, binary classification ML model to predict if a leaf is healthy or infected with powdery mildew.
-
-**1. Data Collection:**
-
-* Obtain the image dataset of healthy and powdery mildew-infected cherry leaves provided by the client.
-
-**2. Data Preprocessing:**
-
-* Clean the dataset by removing any non-image files.
-* Analyze and standardize image sizes for consistency.
-* Split the data into training, validation, and test sets to ensure robust model evaluation.
-
-**3. Feature Extraction:**
-
-* Utilize a Convolutional Neural Network (CNN) to automatically extract relevant features from the images. This will enable the model to learn complex patterns and representations.
-
-**4. Model Selection:**
-
-* Employ a CNN-based machine learning model specifically designed for binary classification tasks. This architecture is well-suited for image data and can effectively distinguish between healthy and infected leaves.
-
-**5. Model Training:**
-
-* Train the selected CNN model using the training dataset.
-* Continuously monitor and validate model performance using the validation set during training. This iterative process ensures optimal model development.
-
-**6. Model Evaluation:**
-
-* Evaluate the trained model's performance using various metrics, including accuracy, precision, recall, and F1-score.
-* Visualize the model's learning curve to assess its training progress and identify potential issues.
-
-**7. Model Testing:**
-
-* Test the model's generalization capabilities by evaluating its performance on different test datasets. This ensures the model can accurately classify new, unseen images.
-
-**8. Deployment:**
-
-* Deploy the trained and optimized model into a production environment.
-* Integrate the model into an application or system where users can:
-    * Upload cherry leaf images.
-    * Receive predictions on leaf health status.
-    * Download comprehensive prediction reports for further analysis and record-keeping.
-
----
 
 ## Model Details
 
 The machine learning model employed in this project is a Convolutional Neural Network (CNN) designed for binary image classification. 
 
 * **Architecture:** The model utilizes a sequential architecture, where layers are arranged in a linear sequence.
-* **Layers:** It consists of four convolutional layers for feature extraction and a dense layer with 128 neurons for further processing.
+* **Layers:** It consists of three convolutional layers for feature extraction, followed by a MaxPooling2D layer after each.  A Flatten layer precedes a dense layer with 256 neurons for further processing.
 * **Regularization:** Dropout layers and early stopping are implemented to mitigate overfitting and enhance generalization.
 * **Output Layer:** The final layer has a single neuron with a sigmoid activation function, producing a probability score for classification.
 * **Loss Function:** Binary cross-entropy is used as the loss function, suitable for binary classification problems.
 * **Optimizer:** The Adam optimizer is employed for efficient model training.
 
-![Model Summary]()
+![Model Summary](/images/cnnmodel.png)
 
 ## Dashboard Design
 

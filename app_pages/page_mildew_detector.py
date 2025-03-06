@@ -22,12 +22,12 @@ def run():
     st.write("### 📥 Upload Images")
     st.markdown(
         "- Download sample images from [Kaggle](https://www.kaggle.com/codeinstitute/cherry-leaves).\n"
-        "- Upload one or more **PNG** images below."
+         "- Upload one or more **PNG or JPG** images below." 
     )
 
     images_buffer = st.file_uploader(
-        label="📤 Upload cherry leaf images (PNG format only)",
-        type='png',
+        label="📤 Upload cherry leaf images (PNG or JPG format)",
+        type=['png', 'jpg'],
         accept_multiple_files=True
     )
 
@@ -38,19 +38,22 @@ def run():
             img_pil = Image.open(image)
             st.image(img_pil, caption=f"🖼️ Image: {image.name}")
 
-            version = 'v1'  
+            version = 'v2'
             resized_img = resize_input_image(img=img_pil, version=version)
             pred_proba, pred_class = load_model_and_predict(resized_img, version=version)
 
-            st.success(f"**Prediction:** {pred_class.upper()} ({pred_proba * 100:.2f}%)")
-            plot_predictions_probabilities(pred_proba, pred_class)
+            if pred_class is not None:
+                st.success(f"**Prediction:** {pred_class.upper()} ({pred_proba * 100:.2f}%)")
+                plot_predictions_probabilities(pred_proba, pred_class)
 
-            new_row = pd.DataFrame([{
-                "Image Name": image.name,
-                "Prediction": pred_class,
-                "Confidence": f"{pred_proba * 100:.2f}%"
-            }])
-            df_report = pd.concat([df_report, new_row], ignore_index=True)
+                new_row = pd.DataFrame([{
+                    "Image Name": image.name,
+                    "Prediction": pred_class,
+                    "Confidence": f"{pred_proba * 100:.2f}%"
+                }])
+                df_report = pd.concat([df_report, new_row], ignore_index=True)
+            else:
+                st.error(f"Failed to make prediction for {image.name}. Please check the image or the model.")
 
         st.write("---")
         if not df_report.empty:

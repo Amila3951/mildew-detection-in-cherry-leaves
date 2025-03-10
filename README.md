@@ -22,9 +22,9 @@ Comprising approximately 4,000 images, the dataset captures cherry leaves collec
 
 ## Business Objectives
 
-Farmy & Foods' cherry orchards have experienced outbreaks of powdery mildew, impacting crop yield. Currently, the detection of powdery mildew involves a manual inspection process, where an employee spends approximately 30 minutes per tree, collecting leaf samples and performing visual assessments. If powdery mildew is detected, a treatment is applied, which takes approximately one minute per tree. With thousands of cherry trees distributed across multiple farms nationwide, this manual inspection method is proving to be inefficient and unsustainable.
+Farmy & Food's cherry orchards have experienced outbreaks of powdery mildew, impacting crop yield. Currently, the detection of powdery mildew involves a manual inspection process, where an employee spends approximately 30 minutes per tree, collecting leaf samples and performing visual assessments. If powdery mildew is detected, a treatment is applied, which takes approximately one minute per tree. With thousands of cherry trees distributed across multiple farms nationwide, this manual inspection method is proving to be inefficient and unsustainable.
 
-To address this challenge, the IT department has proposed developing a machine learning-based system that can rapidly analyze leaf images to determine the presence or absence of powdery mildew. This solution aims to significantly reduce inspection time and improve scalability. Furthermore, the success of this system could pave the way for its application to other crops within Farmy & Foods' portfolio, where similar manual pest detection methods are currently employed. The dataset provided for this project comprises images of cherry leaves collected from the company's farms.
+To address this challenge, the IT department has proposed developing a machine learning-based system that can rapidly analyze leaf images to determine the presence or absence of powdery mildew. This solution aims to significantly reduce inspection time and improve scalability. Furthermore, the success of this system could pave the way for its application to other crops within Farmy & Food's portfolio, where similar manual pest detection methods are currently employed. The dataset provided for this project comprises images of cherry leaves collected from the company's farms.
 
 **Specific Requirements:**
 
@@ -67,22 +67,38 @@ To address this challenge, the IT department has proposed developing a machine l
     **Healthy Leaves**
     ![Image montage healthy leaves](/images/healthy.png)
 
+    _Image montage showing several healthy cherry leaves._
+
+
     **Mildew Leaves**
     ![Image montage mildew leaves](/images/powdery.png)
+
+    _Image montage showing several cherry leaves infected with powdery mildew._
 
     * This visual assessment supports the hypothesis that distinct patterns are observable.
 
 -   **Color and Form Analysis:**
     * Analysis of average color, color difference, and color variability within the central region of each leaf image revealed quantifiable color variations between healthy and infected leaves.
+
+    * Average color was calculated by determining the mean RGB values of pixels within the central region. Color variability was measured by calculating the standard deviation of RGB values. Color difference was obtained by subtracting the average RGB values of healthy leaves from those of infected leaves.
     
-    **Average Healthy**
+    **Average Healthy Leaves**
     ![Average Healthy](/outputs/v1/average_variability_healthy.png)
 
-    **Average Infected**
+    _Visualization of the average color and variability of healthy leaves._
+
+
+    **Average Infected Leaves**
     ![Average Infected](/outputs/v1/average_variability_powdery_mildew.png)
 
-    **Difference healthy - mildew**
+     _Visualization of the average color and variability of infected leaves._
+
+
+    **Difference Between Healthy and Infected Leaves**
     ![Difference](/outputs/v1/class_differences_powdery_mildew_healthy.png)
+
+    _Visualization of the color difference between healthy and infected leaves._
+
 
     * While color differences were evident, no readily apparent shape-based patterns were identified that could reliably distinguish between the two categories.
 
@@ -90,10 +106,13 @@ To address this challenge, the IT department has proposed developing a machine l
 
     * The machine learning pipeline achieved a classification accuracy of 99% in distinguishing between healthy and diseased cherry leaves.
 
+
     ![Performance Metrics](/images/performance_metrics.png)
 
+    _Graph showing performance metrics for the model_
+
     * This result validates the hypothesis that a high-accuracy model could be developed using the provided dataset.
-    * The performance metrics provided by the image, should be discussed in the text, for example: "The performance metrics displayed in the image, showcase a high level of precision, recall and F1 score, thus validating the model's accuracy."
+    * The performance metrics displayed in the image, showcase a high level of precision (99%), recall (99%) and F1 score (99%), thus validating the model's accuracy. A high precision indicates that the model rarely misclassifies a healthy leaf as infected, while a high recall means that it effectively identifies most of the infected leaves. The F1 score, which combines precision and recall, confirms the model's overall effectiveness.
 
 
 
@@ -126,6 +145,8 @@ The client needs a system to classify individual cherry leaf images as either he
 This project followed the Cross-Industry Standard Process for Data Mining (CRISP-DM) methodology to ensure a structured and comprehensive approach to development.
 
 ![Crisp- DM image](/images/crisp.png)
+
+_Image representing the CRISP-DM methodology stages._
 
 **1. Business Understanding**
 
@@ -217,6 +238,8 @@ The machine learning model employed in this project is a Convolutional Neural Ne
 
 ![Model Summary](/images/cnnmodel.png)
 
+_Image showing a summary of the CNN model architecture._
+
 ## Dashboard Design
 
 The interactive dashboard provides a user-friendly interface for exploring the data, visualizing model results, and performing predictions. It comprises the following pages:
@@ -228,7 +251,9 @@ A consistent navigation bar ensures easy access to all dashboard pages.
 <details>
 <summary>Navigation Image</summary>
 
-![Navigation]()
+![Navigation](images/navigation.png)
+
+_Image showing the navigation bar of the dashboard._
 
 </details>
 
@@ -236,7 +261,6 @@ A consistent navigation bar ensures easy access to all dashboard pages.
 
 This page provides an overview of the project, including:
 
-* **Farmy & Foods Logo:** Company branding.
 * **Project Summary:** Concise description of the project's objectives and scope.
 * **Project Dataset:** Information about the dataset used, including source and characteristics.
 * **Business Requirements:** Clearly defined business objectives.
@@ -245,7 +269,9 @@ This page provides an overview of the project, including:
 <details>
 <summary>Project Summary Page Image</summary>
 
-![Navigation]()
+![Summary Page](images/summary_page.png)
+
+_Image showing the project summary page of the dashboard._
 
 </details>
 
@@ -262,9 +288,20 @@ This page facilitates visual exploration of the cherry leaf dataset:
 <details>
 <summary>Leaf Visualizer Page Image</summary>
 
-![Leaf Visualizer Page]()
-![Leaf Visualizer Page]()
-![Leaf Visualizer Page]()
+![Leaf Visualizer Page](images/visualizer.png)
+
+_Image showing the leaf visualizer page with the average and variability image display._
+
+
+![Leaf Visualizer Page](images/visualizer2.png)
+
+_Image showing the leaf visualizer page with the difference between average images._
+
+
+![Leaf Visualizer Page](images/visualizer3.png)
+
+_Image showing the leaf visualizer page with the interactive interface for creating and displaying user-defined image montages._
+
 
 </details>
 
@@ -283,28 +320,18 @@ This page enables users to perform predictions on new cherry leaf images:
 <details>
 <summary>Powdery Mildew Detector Page Image</summary>
 
-![Powdery Mildew Detector Page]()
-![Powdery Mildew Detector Page]()
+![Powdery Mildew Detector Page](images/mildew-detector1.png)
 
+_Image showing the Powdery Mildew Detector page with the file uploader and live prediction info._
+
+
+![Powdery Mildew Detector Page](images/milder-detector2.png)
+
+_Image showing the Powdery Mildew Detector page with prediction results and analysis report._
 </details>
 
-**5. Project Hypotheses and Validation**
 
-This page documents the project's hypotheses and validation results:
-
-* **Powdery Mildew disease detailed explanation:** Provides background information on powdery mildew.
-* **Hypotheses:** Clearly states the project's hypotheses.
-* **Validation:** Presents the validation results and their implications.
-* **Business Requirements:** Reiterates the business objectives.
-
-<details>
-<summary>Project Hypotheses and Validation Page Image</summary>
-
-![Project Hypotheses and Validation Page]()
-
-</details>
-
-**6. ML Performance Metrics**
+**5. ML Performance Metrics**
 
 This page presents detailed information about the machine learning model's performance:
 
@@ -312,13 +339,47 @@ This page presents detailed information about the machine learning model's perfo
 * **Train, Validation and Test Set: Label Frequencies:** Shows the distribution of labels in each dataset split with a plot and explanation.
 * **Model History:** Provides insights into the model's training process, including accuracy and loss over time.
 * **Generalized Performance on Test Set:** Presents the model's performance on the test set using key metrics.
-* **Model accuracy percentage:** Highlights the final model accuracy achieved.
+
 
 <details>
 <summary>ML Performance Metrics Image</summary>
 
-![ML Performance Metrics Page]()
-![ML Performance Metrics Page]()
+![ML Performance Metrics Page](images/avg_img_size.png)
+
+_Image showing the average image size visualization._
+
+
+![ML Performance Metrics Page](images/labels_frequencies.png)
+
+_Image showing the label frequencies in the dataset splits._
+
+
+![ML Performance Metrics Page](images/model_history.png)
+
+_Image showing the model's training history (loss and accuracy)._
+
+
+![ML Performance Metrics Page](images/performance.png)
+
+_Image showing the model's generalized performance metrics on the test set._
+
+</details>
+
+**6. Project Hypotheses and Validation**
+
+This page documents the project's hypotheses and validation results:
+
+* **Detailed explanation of powdery mildew disease:** Provides background information on powdery mildew.
+* **Hypotheses:** States the hypothesis that powdery mildew on cherry leaves exhibits visually detectable characteristics for automated detection.
+* **Validation:** Presents the validation results of machine learning models and their implications.
+* **Next steps** Describes the planned next steps of the project.
+
+<details>
+<summary>Project Hypotheses and Validation Page Image</summary>
+
+![Project Hypotheses and Validation Page Image](images/hypothesis_page.png)
+
+_Image showing the Project Hypotheses and Validation page._
 
 </details>
 
@@ -368,19 +429,15 @@ This project leverages a variety of technologies and libraries to achieve its ob
 * **GitHub:** Used for version control, collaboration, and code storage.
 * **Gitpod:** Provided the development environment for this project, enabling efficient and reproducible coding.
 * **Kaggle:** The source of the cherry leaf image dataset used for model training and evaluation.
-* **Render:** Used for deploying the web application, making it accessible to users.
+Heroku: Used for deploying the web application, making it accessible to users.
 
 ## Credits and Acknowledgements
 
 **Content and Inspiration:**
 
-* **Malaria Detector Project:** Served as a valuable reference and learning resource. [Link to Malaria Detector project]
-* **Churnometer Project:** Provided foundational knowledge and code examples for this project. [Link to Churnometer project]
-* **SerraKD's README:** Used as a reference for README structure and powdery mildew information. [Link to SerraKD's README]
+* **Malaria Detector Project:** Served as a valuable reference and learning resource. 
 * **ChatGPT:** Assisted with troubleshooting and provided additional information.
-
-**Acknowledgements:**
-
+* **Peer Projects (Slack):** Projects shared by fellow students on Slack provided inspiration and practical insights.
 * **Code Institute Slack Channel:** A valuable platform for community support and knowledge sharing.
 
 ---

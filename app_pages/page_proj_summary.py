@@ -22,7 +22,7 @@ def run():
     )
 
     st.markdown(
-        "For additional information, please refer to the [README](https://github.com/Katherine-Holland/NEW-CHERRY-LEAVES/blob/main/README.md)."
+        "For additional information, please refer to the [README](https://github.com/Amila3951/mildew-detection-in-cherry-leaves/blob/main/README.md)."
     )
 
     st.success(

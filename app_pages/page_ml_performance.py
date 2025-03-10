@@ -32,7 +32,7 @@ def run():
     st.write("---")
     st.write("### Average Image Size in Dataset")
     try:
-        average_image_size = plt.imread(f"{selected_version_v1}/image_shape_distribution.png")
+        average_image_size = plt.imread(f"{selected_version_v2}/avg_img_size.png")
         st.image(average_image_size, caption='Average Image Size')
         st.warning(
             "The average image size in the provided dataset is: \n\n"

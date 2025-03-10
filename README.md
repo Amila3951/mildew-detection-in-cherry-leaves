@@ -2,7 +2,7 @@
 
 This project introduces a system for detecting powdery mildew on cherry leaves, developed using machine learning techniques. The application allows users to upload photos of cherry leaves and receive an analysis indicating the presence or absence of the disease. The system generates a downloadable report with the analysis results.
 
-**The application is available at [Powdery Mildew Detection in Cherry Leaves]()**
+**The application is available at [Powdery Mildew Detection in Cherry Leaves](https://mildew-detection-in-cherry-leaves-i2sn.onrender.com/)**
 
 This tool was created with the aim of aiding in the early detection of powdery mildew, a common disease affecting cherry leaves. Using advanced machine learning algorithms, the application analyzes the visual characteristics of the leaves in uploaded photos and classifies them as healthy or infected.
 
@@ -429,7 +429,7 @@ This project leverages a variety of technologies and libraries to achieve its ob
 * **GitHub:** Used for version control, collaboration, and code storage.
 * **Gitpod:** Provided the development environment for this project, enabling efficient and reproducible coding.
 * **Kaggle:** The source of the cherry leaf image dataset used for model training and evaluation.
-* **Heroku:** Used for deploying the web application, making it accessible to users.
+* **Render:** Used for deploying the web application, making it accessible to users.
 
 ## Credits and Acknowledgements
 

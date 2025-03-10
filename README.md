@@ -429,7 +429,7 @@ This project leverages a variety of technologies and libraries to achieve its ob
 * **GitHub:** Used for version control, collaboration, and code storage.
 * **Gitpod:** Provided the development environment for this project, enabling efficient and reproducible coding.
 * **Kaggle:** The source of the cherry leaf image dataset used for model training and evaluation.
-Heroku: Used for deploying the web application, making it accessible to users.
+* **Heroku:** Used for deploying the web application, making it accessible to users.
 
 ## Credits and Acknowledgements
 

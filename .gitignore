@@ -10,7 +10,9 @@ cloudinary_python.txt
 cherry-leaves/train/
 cherry-leaves/test/
 cherry-leaves/validation/
-outputs/v1/
-outputs/v2/
+v1/*
+!v1/*.png
+v2/*
+!v2/*.png
 *.keras
 *.pkl

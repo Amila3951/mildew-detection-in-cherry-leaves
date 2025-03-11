@@ -5,6 +5,7 @@ from matplotlib.image import imread
 import itertools
 import random
 import seaborn as sns
+from PIL import Image
 
 def run():
     st.title("Cherry Leaves Visualizer")
@@ -63,14 +64,13 @@ def run():
 
     st.write("---")
 
-def image_montage(dir_path, label_to_display, nrows, ncols, figsize=(15, 10)):
+def image_montage(dir_path, label_to_display, nrows, ncols, target_size=(150, 150), figsize=(10, 25)):
     sns.set_style("white")
     labels = os.listdir(dir_path)
 
     if label_to_display in labels:
         images_list = os.listdir(f"{dir_path}/{label_to_display}")
 
-        
         if nrows * ncols < len(images_list):
             img_idx = random.sample(images_list, nrows * ncols)
         else:
@@ -82,19 +82,20 @@ def image_montage(dir_path, label_to_display, nrows, ncols, figsize=(15, 10)):
             )
             return
 
-        # Create a figure and display images
         fig, axes = plt.subplots(nrows=nrows, ncols=ncols, figsize=figsize)
         plot_idx = list(itertools.product(range(nrows), range(ncols)))
 
         for i, idx in enumerate(plot_idx):
-            img = imread(f"{dir_path}/{label_to_display}/{img_idx[i]}")
-            img_shape = img.shape
-            axes[idx[0], idx[1]].imshow(img)
-            axes[idx[0], idx[1]].set_title(
-                f"Size: {img_shape[1]}x{img_shape[0]} pixels"
-            )
-            axes[idx[0], idx[1]].set_xticks([])
-            axes[idx[0], idx[1]].set_yticks([])
+            img_path = f"{dir_path}/{label_to_display}/{img_idx[i]}"
+            try:
+                img = Image.open(img_path)
+                img = img.resize(target_size)  # Resize image
+                axes[idx[0], idx[1]].imshow(img)
+                axes[idx[0], idx[1]].set_title(f"Size: {target_size[0]}x{target_size[1]} pixels")
+                axes[idx[0], idx[1]].set_xticks([])
+                axes[idx[0], idx[1]].set_yticks([])
+            except Exception as e:
+                st.error(f"Error loading image: {img_path}. Error: {e}")
 
         plt.tight_layout()
         st.pyplot(fig)

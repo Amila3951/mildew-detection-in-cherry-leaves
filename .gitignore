@@ -10,5 +10,5 @@ cloudinary_python.txt
 cherry-leaves/train/
 cherry-leaves/test/
 cherry-leaves/validation/
-
-
+secrets.toml
+.streamlit

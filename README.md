@@ -411,7 +411,7 @@ This project leverages a variety of technologies and libraries to achieve its ob
 
 * Python
 
-**Libraries:**
+**Essential Libraries for Implementation:**
 
 * **NumPy:** Used for numerical computing and array manipulation, particularly for converting images into arrays for model input.
 * **Pandas:** Employed for data manipulation and analysis, enabling efficient handling of tabular data.
@@ -419,7 +419,6 @@ This project leverages a variety of technologies and libraries to achieve its ob
 * **Seaborn:** Built on top of Matplotlib, Seaborn provides a high-level interface for creating informative and visually appealing statistical graphics.
 * **Plotly:** Used for generating interactive charts and visualizations, enhancing data exploration and presentation.
 * **Streamlit:** Employed to build the interactive dashboard, providing a user-friendly interface for data visualization and model interaction.
-* **Scikit-learn:** A comprehensive machine learning library used for data preprocessing, model selection, training, and evaluation.
 * **TensorFlow:** A powerful open-source library for numerical computation and large-scale machine learning, used for building and training the CNN model.
 * **Keras:** A high-level API for building and training neural networks, providing a user-friendly interface for TensorFlow.
 * **PIL (Pillow):** Used for image processing tasks, such as opening, manipulating, and saving different image file formats.

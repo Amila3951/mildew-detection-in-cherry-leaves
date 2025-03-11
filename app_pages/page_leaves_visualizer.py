@@ -7,7 +7,7 @@ import seaborn as sns
 from PIL import Image
 import shutil
 
-def generate_subset(source_dir, subset_dir, num_images=20):
+def generate_subset(source_dir, subset_dir, num_images=10):
     """
     Generates a subset of images from the source directory.
 
@@ -19,13 +19,13 @@ def generate_subset(source_dir, subset_dir, num_images=20):
     if not os.path.exists(subset_dir):
         os.makedirs(subset_dir) # Creates the directory if it does not exist
 
-    images = [f for f in os.listdir(source_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg'))] # filters files by extension.
-    selected_images = random.sample(images, min(num_images, len(images))) # Selects a random number of images.
+    images = [f for f in os.listdir(source_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg'))] 
+    selected_images = random.sample(images, min(num_images, len(images))) # Selects a random number of images
 
     for img in selected_images:
-        shutil.copy(os.path.join(source_dir, img), os.path.join(subset_dir, img)) # copies images.
+        shutil.copy(os.path.join(source_dir, img), os.path.join(subset_dir, img)) 
 
-def resize_images(input_dir, output_dir, size=(256, 256)):
+def resize_images(input_dir, output_dir, size=(64, 64)):
     """
     Resizes images in the input directory and saves them to the output directory.
 
@@ -37,7 +37,7 @@ def resize_images(input_dir, output_dir, size=(256, 256)):
     for filename in os.listdir(input_dir):
         if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
             img = Image.open(os.path.join(input_dir, filename))
-            img = img.resize(size, Image.Resampling.LANCZOS)  # Koristi Image.Resampling.LANCZOS
+            img = img.resize(size, Image.Resampling.LANCZOS)
             img.save(os.path.join(output_dir, filename))
 
 # Generate subset and resize images
@@ -138,14 +138,14 @@ def cached_image_montage(label_to_display, nrows, ncols, target_size=(150, 150),
 
     for i, idx in enumerate(plot_idx):
         try:
-            img = Image.open(selected_images[i]) # opens image
-            img = img.resize(target_size) # resizes image
-            axes[idx[0], idx[1]].imshow(img) # displays image
-            axes[idx[0], idx[1]].set_title(f"Size: {target_size[0]}x{target_size[1]} pixels") # sets image title.
-            axes[idx[0], idx[1]].set_xticks([]) # removes ticks
-            axes[idx[0], idx[1]].set_yticks([]) # removes ticks
+            img = Image.open(selected_images[i]) 
+            img = img.resize(target_size) 
+            axes[idx[0], idx[1]].imshow(img) 
+            axes[idx[0], idx[1]].set_title(f"Size: {target_size[0]}x{target_size[1]} pixels") 
+            axes[idx[0], idx[1]].set_xticks([]) 
+            axes[idx[0], idx[1]].set_yticks([]) 
         except Exception as e:
-            st.error(f"Error loading image {selected_images[i]}. Error: {e}") # prints error on failure
+            st.error(f"Error loading image {selected_images[i]}. Error: {e}") 
 
     plt.tight_layout() # Improves subplot padding
     return fig

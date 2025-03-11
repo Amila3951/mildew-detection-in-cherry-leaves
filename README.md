@@ -83,19 +83,19 @@ To address this challenge, the IT department has proposed developing a machine l
     * Average color was calculated by determining the mean RGB values of pixels within the central region. Color variability was measured by calculating the standard deviation of RGB values. Color difference was obtained by subtracting the average RGB values of healthy leaves from those of infected leaves.
     
     **Average Healthy Leaves**
-    ![Average Healthy](/outputs/v1/average_variability_healthy.png)
+    ![Average Healthy](images/average_healthy.png)
 
     _Visualization of the average color and variability of healthy leaves._
 
 
     **Average Infected Leaves**
-    ![Average Infected](/outputs/v1/average_variability_powdery_mildew.png)
+    ![Average Infected](images/average_powdery.png)
 
      _Visualization of the average color and variability of infected leaves._
 
 
     **Difference Between Healthy and Infected Leaves**
-    ![Difference](/outputs/v1/class_differences_powdery_mildew_healthy.png)
+    ![Difference](images/class_differences_powdery_mildew_healthy.png)
 
     _Visualization of the color difference between healthy and infected leaves._
 

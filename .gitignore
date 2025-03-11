@@ -7,8 +7,7 @@ __pycache__/
 node_modules/
 .github/
 cloudinary_python.txt
-cherry-leaves/train/
-cherry-leaves/test/
-cherry-leaves/validation/
 secrets.toml
 .streamlit
+data/cherry-leaves/train/
+data/cherry-leaves/test/

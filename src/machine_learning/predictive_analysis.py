@@ -3,7 +3,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import plotly.express as px
-from tensorflow.keras.models import load_model
+import tensorflow as tf
 from PIL import Image
 from src.data_management import load_pkl_file
 import logging
@@ -40,22 +40,13 @@ def resize_input_image(img, version):
     my_image = np.expand_dims(img_resized, axis=0) / 255.0
     return my_image
 
-def load_model_and_predict(my_image, version):
+def load_model_and_predict(my_image, version, model_path):
     try:
-        root_dir = os.path.abspath(os.path.join(os.getcwd(), '..'))
-        model_path = os.path.join(root_dir, "outputs", version, "mildew_detection_model.keras")
-
-        logging.info(f"Model path: {model_path}")
-
-        if not os.path.exists(model_path):
-            logging.error(f"Model file not found at: {model_path}")
-            st.error(f"Model file not found. Please check the model path: {model_path}")
-            return None, None
-
-        model = load_model(model_path)
+        logging.info(f"Loading model from: {model_path}")
+        model = tf.keras.models.load_model(model_path)
+        logging.info("Model loaded successfully.")
 
         if isinstance(my_image, np.ndarray):
-            # Squeeze to remove extra dimensions
             my_image = np.squeeze(my_image)
             if my_image.shape[-1] == 4:
                 my_image = Image.fromarray(np.uint8(my_image[:, :, :3]))
@@ -67,7 +58,6 @@ def load_model_and_predict(my_image, version):
 
         if my_image.mode == 'RGBA':
             my_image = my_image.convert('RGB')
-
 
         image_shape = load_pkl_file(file_path=f"outputs/{version}/image_shape.pkl")
         logging.info(f"Image shape loaded: {image_shape}")

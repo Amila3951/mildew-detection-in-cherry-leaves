@@ -39,8 +39,9 @@ def run():
             st.image(img_pil, caption=f"🖼️ Image: {image.name}")
 
             version = 'v2'
+            model_path = '/opt/render/project/outputs/v2/mildew_detection_model.keras'
             resized_img = resize_input_image(img=img_pil, version=version)
-            pred_proba, pred_class = load_model_and_predict(resized_img, version=version)
+            pred_proba, pred_class = load_model_and_predict(resized_img, version=version,model_path=model_path)
 
             if pred_class is not None:
                 st.success(f"**Prediction:** {pred_class.upper()} ({pred_proba * 100:.2f}%)")

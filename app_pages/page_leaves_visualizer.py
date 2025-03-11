@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 import matplotlib.pyplot as plt
-from matplotlib.image import imread
 import itertools
 import random
 import seaborn as sns
@@ -19,7 +18,7 @@ def run():
         "- Assess the effectiveness of image-based differentiation.\n"
     )
 
-    version = 'v1' 
+    version = 'v1'
 
     # Section: Average and Variability Images
     if st.checkbox("📊 Average and Variability Images"):
@@ -51,20 +50,26 @@ def run():
     if st.checkbox("🖼️ Generate Image Montage"):
         st.write("Create a montage of healthy or infected leaves.")
 
-        my_data_dir = 'data/cherry-leaves' 
+        my_data_dir = 'data/cherry-leaves'
         labels = os.listdir(my_data_dir + '/validation')
         label_to_display = st.selectbox(
             label="Select Label Category", options=labels, index=0
         )
 
         if st.button("Create Montage"):
-            image_montage(dir_path=my_data_dir + '/validation',
-                           label_to_display=label_to_display,
-                           nrows=8, ncols=3, figsize=(10, 25))
+            fig = cached_image_montage(dir_path=my_data_dir + '/validation',
+                                       label_to_display=label_to_display,
+                                       nrows=4, 
+                                       ncols=2, 
+                                       figsize=(8, 12))  
+
+            if fig:
+                st.pyplot(fig)
 
     st.write("---")
 
-def image_montage(dir_path, label_to_display, nrows, ncols, target_size=(150, 150), figsize=(10, 25)):
+@st.cache_data
+def cached_image_montage(dir_path, label_to_display, nrows, ncols, target_size=(150, 150), figsize=(10, 25)):
     sns.set_style("white")
     labels = os.listdir(dir_path)
 
@@ -80,7 +85,7 @@ def image_montage(dir_path, label_to_display, nrows, ncols, target_size=(150, 15
                 f"requested: {nrows * ncols}.\n"
                 f"Try reducing the number of rows or columns."
             )
-            return
+            return None
 
         fig, axes = plt.subplots(nrows=nrows, ncols=ncols, figsize=figsize)
         plot_idx = list(itertools.product(range(nrows), range(ncols)))
@@ -89,7 +94,7 @@ def image_montage(dir_path, label_to_display, nrows, ncols, target_size=(150, 15
             img_path = f"{dir_path}/{label_to_display}/{img_idx[i]}"
             try:
                 img = Image.open(img_path)
-                img = img.resize(target_size)  # Resize image
+                img = img.resize(target_size)
                 axes[idx[0], idx[1]].imshow(img)
                 axes[idx[0], idx[1]].set_title(f"Size: {target_size[0]}x{target_size[1]} pixels")
                 axes[idx[0], idx[1]].set_xticks([])
@@ -98,8 +103,12 @@ def image_montage(dir_path, label_to_display, nrows, ncols, target_size=(150, 15
                 st.error(f"Error loading image: {img_path}. Error: {e}")
 
         plt.tight_layout()
-        st.pyplot(fig)
+        return fig
 
     else:
         st.error("❌ The selected label does not exist in the dataset.")
         st.write(f"Available options: {labels}")
+        return None
+
+if __name__ == "__main__":
+    run()

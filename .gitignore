@@ -14,5 +14,4 @@ v1/*
 !v1/*.png
 v2/*
 !v2/*.png
-*.keras
-*.pkl
+

@@ -7,7 +7,7 @@ import seaborn as sns
 from PIL import Image
 import shutil
 
-def generate_subset(source_dir, subset_dir, num_images=10):
+def generate_subset(source_dir, subset_dir, num_images=8):
     """
     Generates a subset of images from the source directory.
 
@@ -25,7 +25,7 @@ def generate_subset(source_dir, subset_dir, num_images=10):
     for img in selected_images:
         shutil.copy(os.path.join(source_dir, img), os.path.join(subset_dir, img)) 
 
-def resize_images(input_dir, output_dir, size=(64, 64)):
+def resize_images(input_dir, output_dir, size=(128, 128)):
     """
     Resizes images in the input directory and saves them to the output directory.
 
@@ -107,7 +107,7 @@ def run():
     st.write("---")
 
 @st.cache_data
-def cached_image_montage(label_to_display, nrows, ncols, target_size=(150, 150), figsize=(10, 25)):
+def cached_image_montage(label_to_display, nrows, ncols, target_size=(128, 128), figsize=(10, 25)):
     """
     Function to create and display a montage of images.
 

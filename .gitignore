@@ -11,3 +11,5 @@ secrets.toml
 .streamlit
 data/cherry-leaves/train/
 data/cherry-leaves/test/
+data/cherry-leaves/healthy/
+data/cherry-leaves/powdery_mildew/

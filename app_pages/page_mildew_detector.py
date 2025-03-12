@@ -2,13 +2,17 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 import pandas as pd
-
 from src.data_management import download_dataframe_as_csv
 from src.machine_learning.predictive_analysis import (
-    load_model_and_predict,
     resize_input_image,
-    plot_predictions_probabilities
+    plot_predictions_probabilities,
+    load_model_and_predict 
 )
+
+@st.cache_resource
+def load_model(model_path):
+    import tensorflow as tf
+    return tf.keras.models.load_model(model_path)
 
 def run():
     st.title("Cherry Leaf Mildew Detector")
@@ -22,7 +26,7 @@ def run():
     st.write("### 📥 Upload Images")
     st.markdown(
         "- Download sample images from [Kaggle](https://www.kaggle.com/codeinstitute/cherry-leaves).\n"
-        "- Upload one or more **PNG or JPG** images below." 
+        "- Upload one or more **PNG or JPG** images below."
     )
 
     images_buffer = st.file_uploader(
@@ -33,15 +37,16 @@ def run():
 
     if images_buffer:
         df_report = pd.DataFrame()
+        with st.spinner("Loading model..."):
+            model = load_model('outputs/v2/mildew_detection_model.keras') 
         for image in images_buffer:
             st.subheader(f"📄 Leaf Sample: **{image.name}**")
             img_pil = Image.open(image)
             st.image(img_pil, caption=f"🖼️ Image: {image.name}")
 
             version = 'v2'
-            model_path = 'outputs/v2/mildew_detection_model.keras'
             resized_img = resize_input_image(img=img_pil, version=version)
-            pred_proba, pred_class = load_model_and_predict(resized_img, version=version, model_path=model_path)
+            pred_proba, pred_class = load_model_and_predict(resized_img, version=version, model=model) 
 
             if pred_class is not None:
                 st.success(f"**Prediction:** {pred_class.upper()} ({pred_proba * 100:.2f}%)")
@@ -62,3 +67,6 @@ def run():
             st.table(df_report)
             st.markdown(download_dataframe_as_csv(df_report), unsafe_allow_html=True)
             st.info("Download the table as a CSV file.")
+
+if __name__ == "__main__":
+    run()

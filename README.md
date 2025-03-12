@@ -2,7 +2,7 @@
 
 This project introduces a system for detecting powdery mildew on cherry leaves, developed using machine learning techniques. The application allows users to upload photos of cherry leaves and receive an analysis indicating the presence or absence of the disease. The system generates a downloadable report with the analysis results.
 
-**The application is available at [Powdery Mildew Detection in Cherry Leaves]**
+**The application is available at [Powdery Mildew Detection in Cherry Leaves](https://mildew-detection-in-cherry-leaves-i2sn.onrender.com/)**
 
 This tool was created with the aim of aiding in the early detection of powdery mildew, a common disease affecting cherry leaves. Using advanced machine learning algorithms, the application analyzes the visual characteristics of the leaves in uploaded photos and classifies them as healthy or infected.
 
@@ -20,7 +20,7 @@ The dataset utilized in this project was sourced from [Kaggle](https://www.kaggl
 
 Comprising approximately 4,000 images, the dataset captures cherry leaves collected directly from the client's agricultural fields. These images depict both healthy leaves and those exhibiting symptoms of powdery mildew, a fungal disease that affects a wide range of plant species. Given that the cherry plantation represents a key product line for the corporation, maintaining high product quality is paramount. The presence of powdery mildew poses a significant concern regarding the potential degradation of product standards, necessitating the development of effective detection and mitigation strategies.
 
-## Business Objectives
+## Business Objectives and Machine Learning Solution
 
 Farmy & Food's cherry orchards have experienced outbreaks of powdery mildew, impacting crop yield. Currently, the detection of powdery mildew involves a manual inspection process, where an employee spends approximately 30 minutes per tree, collecting leaf samples and performing visual assessments. If powdery mildew is detected, a treatment is applied, which takes approximately one minute per tree. With thousands of cherry trees distributed across multiple farms nationwide, this manual inspection method is proving to be inefficient and unsustainable.
 
@@ -30,6 +30,23 @@ To address this challenge, the IT department has proposed developing a machine l
 
 1.  Develop a system capable of accurately differentiating between cherry leaves affected by powdery mildew and healthy leaves based on visual analysis.
 2.  Implement a classification model that can determine whether a given cherry leaf image depicts a healthy leaf or one infected with powdery mildew.
+
+### Project Goals
+
+* **Visual Analysis:** Provide an interactive dashboard for visualizing and comparing healthy and infected leaves.
+* **Image Classification:** Develop a machine learning model that accurately predicts the health status of cherry leaves.
+
+### Machine Learning Solution
+
+A binary classification model, specifically a Convolutional Neural Network (CNN), will be trained on a dataset of cherry leaf images. This model will be integrated into an interactive dashboard, allowing users to upload images and receive predictions.
+
+### Client Benefits
+
+* **Improved Efficiency:** Automate the detection process, saving time and resources.
+* **Enhanced Accuracy:** Achieve high accuracy in disease detection.
+* **Scalability:** Easily scale the solution to accommodate larger datasets and future applications.
+
+This project will deliver a valuable tool for Farmy & Foods, improving their ability to manage powdery mildew and maintain the quality of their cherry crops.
 
 ## Hypotheses and Validation Methodology
 
@@ -65,12 +82,14 @@ To address this challenge, the IT department has proposed developing a machine l
     * A comparative image montage visually demonstrates the discernible differences between healthy cherry leaves and those affected by powdery mildew.
 
     **Healthy Leaves**
+
     ![Image montage healthy leaves](/images/healthy.png)
 
     _Image montage showing several healthy cherry leaves._
 
 
     **Mildew Leaves**
+
     ![Image montage mildew leaves](/images/powdery.png)
 
     _Image montage showing several cherry leaves infected with powdery mildew._
@@ -81,20 +100,24 @@ To address this challenge, the IT department has proposed developing a machine l
     * Analysis of average color, color difference, and color variability within the central region of each leaf image revealed quantifiable color variations between healthy and infected leaves.
 
     * Average color was calculated by determining the mean RGB values of pixels within the central region. Color variability was measured by calculating the standard deviation of RGB values. Color difference was obtained by subtracting the average RGB values of healthy leaves from those of infected leaves.
+
     
     **Average Healthy Leaves**
+
     ![Average Healthy](images/average_healthy.png)
 
     _Visualization of the average color and variability of healthy leaves._
 
 
     **Average Infected Leaves**
+
     ![Average Infected](images/average_powdery.png)
 
      _Visualization of the average color and variability of infected leaves._
 
 
     **Difference Between Healthy and Infected Leaves**
+
     ![Difference](images/class_differences_powdery_mildew_healthy.png)
 
     _Visualization of the color difference between healthy and infected leaves._
@@ -202,29 +225,6 @@ The project utilizes the [Kaggle dataset](https://www.kaggle.com/datasets/codein
 * **Model Deployment:** Deploy the trained and evaluated model into a production environment for real-world use.
 
 
-
-## Machine Learning Business Case
-
-This project addresses a critical business need for Farmy & Foods: automating the detection of powdery mildew in cherry leaves. Currently, manual inspection is time-consuming and inefficient. This project leverages machine learning to develop a system that accurately classifies cherry leaf images as healthy or infected.
-
-### Project Goals
-
-* Visual Analysis: Provide an interactive dashboard for visualizing and comparing healthy and infected leaves.
-* Image Classification: Develop a machine learning model that accurately predicts the health status of cherry leaves.
-
-### Solution
-
-A binary classification model, specifically a Convolutional Neural Network (CNN), will be trained on a dataset of cherry leaf images. This model will be integrated into an interactive dashboard, allowing users to upload images and receive predictions.
-
-### Client Benefits
-
-* Improved Efficiency: Automate the detection process, saving time and resources.
-* Enhanced Accuracy: Achieve high accuracy in disease detection.
-* Scalability: Easily scale the solution to accommodate larger datasets and future applications.
-
-This project will deliver a valuable tool for Farmy & Foods, improving their ability to manage powdery mildew and maintain the quality of their cherry crops.
-
-
 ## Model Details
 
 The machine learning model employed in this project is a Convolutional Neural Network (CNN) designed for binary image classification. 
@@ -328,6 +328,7 @@ _Image showing the Powdery Mildew Detector page with the file uploader and live 
 ![Powdery Mildew Detector Page](images/milder-detector2.png)
 
 _Image showing the Powdery Mildew Detector page with prediction results and analysis report._
+
 </details>
 
 
@@ -383,6 +384,37 @@ _Image showing the Project Hypotheses and Validation page._
 
 </details>
 
+## Improvements and Bug Fixes
+
+This section outlines the improvements and bug fixes implemented during the deployment and optimization of the Cherry Leaf Mildew Detection project on Render.
+
+### Deployment Optimization
+
+* **Slug Size Reduction:**
+    * Addressed Render's slug size limitations by generating a smaller subset of images and resizing them, reducing the application's overall size.
+* **Repository Cleanup:**
+    * Removed large datasets and unnecessary directories (`train`, `test`, `healthy`, `powdery_mildew`) from the repository, adding them to `.gitignore` to streamline the repository.
+* **Dependency Management:**
+    * Resolved dependency conflicts by specifying compatible versions of `numpy` and removing conflicting `tensorflow` versions.
+    * Declared Python runtime (3.12.1) for consistent execution.
+* **Pathing issues:**
+    * Corrected pathing issues for evaluation.pkl by utilizing relative paths and load_pkl_file function for proper Git LFS handling. The load_pkl_file function ensures the .pkl files, which are tracked using Git LFS, are correctly loaded in the deployed environment by managing their retrieval.
+
+### Code Improvements
+
+* **Image Processing Robustness:**
+    * Enhanced image processing to handle various image formats robustly, including type checks for PIL Image operations, NumPy array conversions, dimension handling, and RGBA conversions.
+* **Model Loading Optimization:**
+    * Implemented lazy loading for the prediction model to reduce initial load time and memory usage.
+* **Memory Optimization:**
+    * Optimized the Leaves Visualizer to reduce memory consumption during image loading.
+
+These changes contribute to a more efficient, stable, and user-friendly application deployed on Render.
+
+**Deployment Notes:**
+
+Originally, the project was intended for deployment on Heroku. However, despite extensive efforts to reduce the application's size, including image subset generation and resizing, the project exceeded Heroku's maximum slug size limitations. Consequently, the application has been successfully deployed on Render's free tier, ensuring accessibility and functionality.
+
 ## Forking and Cloning the Repository
 
 **Forking:**
@@ -428,7 +460,7 @@ This project leverages a variety of technologies and libraries to achieve its ob
 * **GitHub:** Used for version control, collaboration, and code storage.
 * **Gitpod:** Provided the development environment for this project, enabling efficient and reproducible coding.
 * **Kaggle:** The source of the cherry leaf image dataset used for model training and evaluation.
-* **Heroku:** Used for deploying the web application, making it accessible to users.
+* **Render:** Used for deploying the web application, making it accessible to users.
 
 ## Credits and Acknowledgements
 

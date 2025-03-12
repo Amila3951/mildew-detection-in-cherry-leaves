@@ -2,7 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
 from src.machine_learning.evaluate_clf import load_test_evaluation
-import pickle
+from src.data_management import load_pkl_file
 import os
 
 def run():
@@ -78,24 +78,20 @@ def run():
 
     st.write("### Generalised Performance on Test Set")
 
-    evaluation_file_path = "/outputs/v2/evaluation.pkl"
+    evaluation_file_path = "outputs/v2/evaluation.pkl"  
 
-    if os.path.exists(evaluation_file_path):
-        try:
-            with open(evaluation_file_path, 'rb') as f:
-                evaluation = pickle.load(f)
+    try:
+        evaluation = load_pkl_file(file_path=evaluation_file_path)  
 
-            # Extract specific values for Loss and Accuracy
-            loss = evaluation['test_loss']
-            accuracy = evaluation['test_accuracy']
+        # Extract specific values for Loss and Accuracy
+        loss = evaluation['test_loss']
+        accuracy = evaluation['test_accuracy']
 
-            # Display Loss and Accuracy
-            st.write(f"**Test Loss:** {loss:.4f}")
-            st.write(f"**Test Accuracy:** {accuracy * 100:.2f}%")
+        # Display Loss and Accuracy
+        st.write(f"**Test Loss:** {loss:.4f}")
+        st.write(f"**Test Accuracy:** {accuracy * 100:.2f}%")
 
-        except FileNotFoundError:
-            st.warning(f"Evaluation file not found at: {evaluation_file_path}")
-        except Exception as e:
-            st.error(f"Error loading evaluation file: {e}")
-    else:
-        st.warning(f"Evaluation file does not exist at : {evaluation_file_path}")
+    except FileNotFoundError:
+        st.warning(f"Evaluation file not found at: {evaluation_file_path}")
+    except Exception as e:
+        st.error(f"Error loading evaluation file: {e}")

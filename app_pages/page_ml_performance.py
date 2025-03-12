@@ -78,7 +78,7 @@ def run():
 
     st.write("### Generalised Performance on Test Set")
 
-    evaluation_file_path = "/workspaces/mildew-detection-in-cherry-leaves/outputs/v2/evaluation.pkl"
+    evaluation_file_path = "/outputs/v2/evaluation.pkl"
 
     if os.path.exists(evaluation_file_path):
         try:
